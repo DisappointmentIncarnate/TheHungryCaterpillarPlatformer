@@ -44,6 +44,32 @@ public class Caterpillar : MonoBehaviour
             //instant death, move back to menu 
             Destroy(this.gameObject); 
             SceneManager.LoadScene("Menu"); 
+        }else if(col.gameObject.tag == "bad_item"){
+            changeStat(1, 1, false);
+        }else if(col.gameObject.tag == "good_item"){
+            changeStat(1, 1, true);
+            changeStat(1, 0, true);
         }
+    }
+
+    //passed variables (damage = amount to change, stat either 0 or 1, 0 flags hitpoints, 1 flags health, bool flag used to determine whehter to add or sub
+    void changeStat(int damage, int stat, bool good){
+        if(!good){
+            if(stat == 0){ //reduce hit points
+                hitpoints = hitpoints - damage;
+            }else if(stat == 1){ //reduce health
+                health = health - damage;
+            }
+        }else{
+            if(stat == 0 && hitpoints < 3){ //increase hit points
+                hitpoints = hitpoints + damage;
+            }else if(stat == 1 && health < 4){ //increase health
+                health = health + damage;
+            }
+        }
+        if(health <= 0 || hitpoints <= 0){ //player dies from damage
+            SceneManager.LoadScene("Menu");
+        }
+        print("HP: " + hitpoints + " Health: " + health); //temporary console print
     }
 }

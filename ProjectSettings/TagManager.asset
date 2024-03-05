@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - boundary
+  - bad_item
+  - good_item
   layers:
   - Default
   - TransparentFX
