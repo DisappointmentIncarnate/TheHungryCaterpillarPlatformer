@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Caterpillar : MonoBehaviour
 {
+    public int hitpoints; //default 3 (at 0 the player loses)
+    public int health; //default 4 (contributes to player speed, at 0 the player loses)
     public float speed; //0.01 is the float used in the first scene
     public float jump; //17 is the default used in the first scene
     private float horizontalMovement;
@@ -14,6 +17,9 @@ public class Caterpillar : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        hitpoints = 3;
+        health = 4;
+
     }
 
     // Update is called once per frame
@@ -30,6 +36,14 @@ public class Caterpillar : MonoBehaviour
             sprite.flipX = true;
         }else if (horizontalMovement == 1){ //else do not flip sprite
             sprite.flipX = false;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col){ //on collision with anything
+        if(col.gameObject.tag == "boundary"){ //running into a "boundary" which is currently falling into void
+            //instant death, move back to menu 
+            Destroy(this.gameObject); 
+            SceneManager.LoadScene("Menu"); 
         }
     }
 }
