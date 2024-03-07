@@ -21,7 +21,7 @@ public class LevelController : MonoBehaviour
         //checks for good item pickups every frame, probably inefficient but who cares
         pickups = GameObject.FindGameObjectsWithTag("good_item").Length; 
         if(pickups == 0){ //when no more items left to pick up are on the scene, change scene
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

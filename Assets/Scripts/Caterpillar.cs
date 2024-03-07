@@ -43,7 +43,7 @@ public class Caterpillar : MonoBehaviour
         if(col.gameObject.tag == "boundary"){ //running into a "boundary" which is currently falling into void
             //instant death, move back to menu 
             Destroy(this.gameObject); 
-            SceneManager.LoadScene("Menu"); 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }else if(col.gameObject.tag == "bad_item"){
             changeStat(1, 1, false);
         }else if(col.gameObject.tag == "good_item"){
@@ -68,7 +68,7 @@ public class Caterpillar : MonoBehaviour
             }
         }
         if(health <= 0 || hitpoints <= 0){ //player dies from damage
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         print("HP: " + hitpoints + " Health: " + health); //temporary console print
     }
