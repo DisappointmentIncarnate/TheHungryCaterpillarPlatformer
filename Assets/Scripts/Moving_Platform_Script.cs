@@ -33,16 +33,17 @@ public class Movine_Platform_Script : MonoBehaviour
     }
     //Moves the player when entering the platform
     private void OnCollisionEnter2D(Collision2D collision)
-{
+    {
         if(collision.transform.position.y > transform.position.y)
         {
          collision.transform.SetParent(transform);
         }
-}
-    //Stops moving the player when exiting the platform
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         collision.transform.SetParent(null);
     }
+    
 }
 
