@@ -49,6 +49,8 @@ public class Caterpillar : MonoBehaviour
         }else if(col.gameObject.tag == "good_item"){
             changeStat(1, 1, true);
             changeStat(1, 0, true);
+        }else if(col.gameObject.tag == "enemy"){
+            changeStat(1, 0, false);
         }
     }
 
