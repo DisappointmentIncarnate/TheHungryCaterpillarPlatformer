@@ -22,6 +22,14 @@ public class Caterpillar : MonoBehaviour
 
     }
 
+    public int get_hitpoints(){
+        return hitpoints;
+    }
+
+    public int get_health(){
+        return health;
+    }
+
     // Update is called once per frame
     void Update()
     {
