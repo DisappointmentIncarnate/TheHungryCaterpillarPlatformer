@@ -133,3 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1928f154602518a4790629b28c77fcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goodItems: []
+  badItems:
+  - {fileID: 21300000, guid: f8be1119cd8f84eeaba486c77d2b4f47, type: 3}
+  - {fileID: 21300000, guid: 877cfd5a1c30b4f9e81a068a2a141483, type: 3}
+  - {fileID: 21300000, guid: 4fe93d1978471429e8644b38c81e2eb1, type: 3}
