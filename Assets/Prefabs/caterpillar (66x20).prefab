@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 0
   health: 0
-  speed: 0.01
+  speed: 0.14
   jump: 17
 --- !u!70 &56221662146429678
 CapsuleCollider2D:

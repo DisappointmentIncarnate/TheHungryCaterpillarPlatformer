@@ -31,19 +31,21 @@ public class Caterpillar : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal"); //Gets left & right key press
         gameObject.transform.position = new Vector2(transform.position.x + (horizontalMovement * speed), transform.position.y ); //transform x based upon direction & speed
-
-        if(Input.GetKeyDown(KeyCode.Space) && rigidBody.velocity.y == 0){ //if space pressed & if the player is not moving up or down (jumping or falling)
-            rigidBody.AddForce(transform.up * jump, ForceMode2D.Impulse); //add upward force to the rigidbody2d, using impulse force
-        }
 
         if(horizontalMovement == -1){ //if going left, flip sprite
             sprite.flipX = true;
         }else if (horizontalMovement == 1){ //else do not flip sprite
             sprite.flipX = false;
+        }
+    }
+    
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Space) && rigidBody.velocity.y == 0){ //if space pressed & if the player is not moving up or down (jumping or falling)
+            rigidBody.AddForce(transform.up * jump, ForceMode2D.Impulse); //add upward force to the rigidbody2d, using impulse force
         }
     }
 
