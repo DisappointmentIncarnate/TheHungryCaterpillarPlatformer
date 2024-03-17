@@ -104,11 +104,11 @@ MonoBehaviour:
   speed: 0.2
   jump: 17
   healthSprites:
-  - {fileID: 1052510887, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
-  - {fileID: 1374705254, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
-  - {fileID: 231661373, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
-  - {fileID: -1842268604, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
-  - {fileID: -572765497, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
+  - {fileID: -685804253, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
+  - {fileID: -1892998099, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
+  - {fileID: 607980738, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
+  - {fileID: -298140056, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
+  - {fileID: -803694814, guid: 8e635c73a1ecddd4791600f4d4c94afa, type: 3}
 --- !u!70 &56221662146429678
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
