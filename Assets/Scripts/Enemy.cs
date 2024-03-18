@@ -31,16 +31,5 @@ public class Enemy : MonoBehaviour
         //Moving the platform to the point position with index "i"
         transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        
-    }
-    
 }
 
