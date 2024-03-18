@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public Sprite[] goodItems;
     public Sprite[] badItems;
     SpriteRenderer spriteRender;
 

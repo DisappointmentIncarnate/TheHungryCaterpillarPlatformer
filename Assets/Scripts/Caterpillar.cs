@@ -50,9 +50,15 @@ public class Caterpillar : MonoBehaviour
         if(invincible){
             hitInvicibility--;
             if(hitInvicibility <= 0){
+                spriteRender.enabled = true; //ensures sprite is back on by the end
                 invincible = false;
                 hitInvicibility = 60;
+            }else if(hitInvicibility % 10 == 0){ //creates flashing effect by turning off and on
+                spriteRender.enabled = false;
+            }else if(hitInvicibility % 5 == 0){
+                spriteRender.enabled = true;
             }
+
         }
     }
     
