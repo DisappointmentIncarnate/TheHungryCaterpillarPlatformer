@@ -9,11 +9,6 @@ public class LevelController : MonoBehaviour
     //Attach this to anything on the scene, for level 1, this and camera controller are attached to main camera
 
     public int pickups;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

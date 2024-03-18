@@ -10,6 +10,7 @@ public class HUDController : MonoBehaviour
     public TMP_Text food;
     public Caterpillar player;
     public Sprite[] hearts;
+    public TMP_Text lives;
 
     private int totalFood;
     private int collectedFood;
@@ -25,5 +26,6 @@ public class HUDController : MonoBehaviour
         healthbar.sprite = hearts[player.get_hitpoints()]; //updates health bar
         collectedFood = totalFood - GameObject.FindGameObjectsWithTag("good_item").Length;
         food.text = "Food: " + collectedFood + " / " + totalFood;
+        lives.text = " x " + LoseLife.livesAmount();
     }
 }

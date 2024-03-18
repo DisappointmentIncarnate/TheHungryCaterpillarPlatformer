@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Caterpillar : MonoBehaviour
 {
-    public int hitpoints; //default 3 (at 0 the player loses)
-    public int health; //default 4 (contributes to player speed, at 0 the player loses)
-    public float speed; //0.01 is the float used in the first scene
+    private int hitpoints; //default 3 (at 0 the player loses)
+    private int health; //default 4 (contributes to player speed, at 0 the player loses)
+    public float speed; //0.2 is the float used in the first scene
     public float jump; //17 is the default used in the first scene
     public Sprite[] healthSprites;
+    private int hitInvicibility; //ticks between when you can get hit
+    private bool invincible = false; //flag for inviciblity after getting hit
+
+
     private float horizontalMovement;
     Rigidbody2D rigidBody;
     SpriteRenderer spriteRender;
@@ -20,7 +24,7 @@ public class Caterpillar : MonoBehaviour
         spriteRender = GetComponent<SpriteRenderer>();
         hitpoints = 3;
         health = 4;
-
+        hitInvicibility = 60;
     }
 
     public int get_hitpoints(){
@@ -42,6 +46,14 @@ public class Caterpillar : MonoBehaviour
         }else if (horizontalMovement == 1){ //else do not flip sprite
             spriteRender.flipX = false;
         }
+
+        if(invincible){
+            hitInvicibility--;
+            if(hitInvicibility <= 0){
+                invincible = false;
+                hitInvicibility = 60;
+            }
+        }
     }
     
     void Update(){
@@ -51,44 +63,50 @@ public class Caterpillar : MonoBehaviour
         spriteUpdate();
     }
 
+    void spriteUpdate(){
+        spriteRender.sprite = healthSprites[health];
+    }
+
     void OnCollisionEnter2D(Collision2D col){ //on collision with anything
         if(col.gameObject.tag == "boundary"){ //running into a "boundary" which is currently falling into void
-            //instant death, move back to menu 
-            Destroy(this.gameObject); 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //instant death
+            changeStat(10, 0,false); 
         }else if(col.gameObject.tag == "bad_item"){
             changeStat(1, 1, false);
+            invincible = true;
         }else if(col.gameObject.tag == "good_item"){
             changeStat(1, 1, true);
             changeStat(1, 0, true);
         }else if(col.gameObject.tag == "enemy"){
             changeStat(1, 0, false);
+            invincible = true;
         }
     }
 
     //passed variables (damage = amount to change, stat either 0 or 1, 0 flags hitpoints, 1 flags health, bool flag used to determine whehter to add or sub
     void changeStat(int damage, int stat, bool good){
-        if(!good){
-            if(stat == 0){ //reduce hit points
-                hitpoints = hitpoints - damage;
-            }else if(stat == 1){ //reduce health
-                health = health - damage;
-                speed-=0.03f;
-            }
+        if(damage > 3){
+            hitpoints = 0;
         }else{
-            if(stat == 0 && hitpoints < 3){ //increase hit points
-                hitpoints = hitpoints + damage;
-            }else if(stat == 1 && health < 4){ //increase health
-                health = health + damage;
-                speed+=0.03f;
+            if(!good){
+                if(stat == 0 && !invincible){ //reduce hit points
+                    hitpoints = hitpoints - damage;
+                }else if(stat == 1 && !invincible){ //reduce health
+                    health = health - damage;
+                    speed-=0.03f;
+                }
+            }else{
+                if(stat == 0 && hitpoints < 3){ //increase hit points
+                    hitpoints = hitpoints + damage;
+                }else if(stat == 1 && health < 4){ //increase health
+                    health = health + damage;
+                    speed+=0.03f;
+                }
             }
         }
         if(health <= 0 || hitpoints <= 0){ //player dies from damage
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LoseLife.ChangeScene();
         }
     }
 
-    void spriteUpdate(){
-        spriteRender.sprite = healthSprites[health];
-    }
 }
