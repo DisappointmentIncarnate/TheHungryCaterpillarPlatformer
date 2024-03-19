@@ -41,7 +41,7 @@ public class DroppingEnemy : MonoBehaviour
         if(internalCooldown <= 0 && dropItem){
             GameObject item = Instantiate(itemPrefab, transform.position, transform.rotation);
             dropItem = false;
-            internalCooldown = 1700;
+            internalCooldown = Random.Range(100, 3000);
         }else{
             dropItem = true;
             internalCooldown--;

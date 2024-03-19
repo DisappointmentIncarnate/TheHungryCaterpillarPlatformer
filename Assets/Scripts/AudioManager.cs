@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -16,22 +15,6 @@ public class AudioManager : MonoBehaviour
     private void Awake() 
     {
         DontDestroyOnLoad(transform.gameObject);
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnSceneLoaded (Scene scene, LoadSceneMode mode)
-    {
-        if(scene.buildIndex != 0)
-        {
-            musicSource.clip = background;
-            musicSource.Stop();
-        } 
-        //if (scene.buildIndex == 1)
-        //{
-        //    musicSource.clip = background;
-        //    musicSource.Play();
-        //}
     }
 
     private void Start()

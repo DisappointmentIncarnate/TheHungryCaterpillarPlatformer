@@ -13,4 +13,8 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void extraGame(){
+        SceneManager.LoadScene("Extra");
+    }
+
 }
