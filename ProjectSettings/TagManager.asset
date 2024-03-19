@@ -8,6 +8,7 @@ TagManager:
   - bad_item
   - good_item
   - enemy
+  - Audio
   layers:
   - Default
   - TransparentFX
