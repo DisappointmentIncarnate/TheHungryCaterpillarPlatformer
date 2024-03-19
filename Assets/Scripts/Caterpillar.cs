@@ -13,6 +13,11 @@ public class Caterpillar : MonoBehaviour
     private int hitInvicibility; //ticks between when you can get hit
     private bool invincible = false; //flag for inviciblity after getting hit
 
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
 
     private float horizontalMovement;
     Rigidbody2D rigidBody;
@@ -63,8 +68,40 @@ public class Caterpillar : MonoBehaviour
     }
     
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Space) && rigidBody.velocity.y == 0){ //if space pressed & if the player is not moving up or down (jumping or falling)
-            rigidBody.AddForce(transform.up * jump, ForceMode2D.Impulse); //add upward force to the rigidbody2d, using impulse force
+        //if(Input.GetKeyDown(KeyCode.Space) && rigidBody.velocity.y == 0){ //if space pressed & if the player is not moving up or down (jumping or falling)
+            //rigidBody.AddForce(transform.up * jump, ForceMode2D.Impulse); //add upward force to the rigidbody2d, using impulse force
+        //}
+        if (rigidBody.velocity.y == 0) //coyote time, gives the player a short time to jump after falling from the ground
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        if (Input.GetButtonDown("Jump")) //Jump buffer, players can buffer a jump slightly before landing 
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f) //full jump, hold down the button for a longer jump
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jump);
+
+            jumpBufferCounter = 0f;
+
+        }
+
+        if (Input.GetButtonUp("Jump") && rigidBody.velocity.y > 0f) //half jump, tap the button for a short hop.
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * 0.5f);
+
+            coyoteTimeCounter = 0f;
         }
         spriteUpdate();
     }
