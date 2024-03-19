@@ -18,7 +18,7 @@ public class FallingItem : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(timer<0 && item.velocity.y == 0){ //break after time and hits ground
             Destroy(gameObject);

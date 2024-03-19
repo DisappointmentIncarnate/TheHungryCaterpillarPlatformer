@@ -33,8 +33,11 @@ public class DroppingEnemy : MonoBehaviour
             }
         }
         //Moving the platform to the point position with index "i"
-        transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
-        activateDrop();   
+        transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);   
+    }
+
+    void FixedUpdate(){
+        activateDrop();
     }
 
     void activateDrop(){

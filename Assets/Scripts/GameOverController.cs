@@ -25,7 +25,7 @@ public class GameOverController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(SceneManager.GetActiveScene().name != "Ending"){ //regular game over
             if(!finishCount){
