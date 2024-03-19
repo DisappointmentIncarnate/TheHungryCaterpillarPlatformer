@@ -27,7 +27,9 @@ public class Caterpillar : MonoBehaviour
 
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        if(audioManager != null){
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        }
     }
 
     // Start is called before the first frame update
