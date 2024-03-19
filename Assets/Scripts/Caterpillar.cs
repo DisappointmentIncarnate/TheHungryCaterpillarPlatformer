@@ -68,9 +68,6 @@ public class Caterpillar : MonoBehaviour
     }
     
     void Update(){
-        //if(Input.GetKeyDown(KeyCode.Space) && rigidBody.velocity.y == 0){ //if space pressed & if the player is not moving up or down (jumping or falling)
-            //rigidBody.AddForce(transform.up * jump, ForceMode2D.Impulse); //add upward force to the rigidbody2d, using impulse force
-        //}
         if (rigidBody.velocity.y == 0) //coyote time, gives the player a short time to jump after falling from the ground
         {
             coyoteTimeCounter = coyoteTime;
