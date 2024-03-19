@@ -22,6 +22,14 @@ public class Caterpillar : MonoBehaviour
     private float horizontalMovement;
     Rigidbody2D rigidBody;
     SpriteRenderer spriteRender;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -114,9 +122,11 @@ public class Caterpillar : MonoBehaviour
         }else if(col.gameObject.tag == "bad_item"){
             changeStat(1, 1, false);
             invincible = true;
+            audioManager.PlaySFX(audioManager.chomp);
         }else if(col.gameObject.tag == "good_item"){
             changeStat(1, 1, true);
             changeStat(1, 0, true);
+            audioManager.PlaySFX(audioManager.chomp);
         }else if(col.gameObject.tag == "enemy"){
             changeStat(1, 0, false);
             invincible = true;
