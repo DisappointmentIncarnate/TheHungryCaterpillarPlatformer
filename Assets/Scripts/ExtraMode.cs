@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 /*
     This entire thing was just an addition that doesn't really have anything to do with the main platformer game
-
+    ExtraMode, ExtraHUDControl, parts of FallingItem / FlyingItems were modified to fit this additiona gamemode
 
 */
 
