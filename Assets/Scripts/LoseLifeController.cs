@@ -5,6 +5,8 @@ using TMPro;
 
 public class LoseLifeController : MonoBehaviour
 {
+    // Code that executes on the scene where it displays a lost life
+    
     private bool finishCount = false;
     private int timer = 1400;
 

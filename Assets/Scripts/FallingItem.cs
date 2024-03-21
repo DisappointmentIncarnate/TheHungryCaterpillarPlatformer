@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FallingItem : MonoBehaviour
 {
-    private int timer = 800;
+    private int timer = 200;
     public bool side; //used only in extra mode
     public bool leftRight; //used only in extra mode
     Rigidbody2D item;
@@ -13,7 +13,7 @@ public class FallingItem : MonoBehaviour
     {
         item = GetComponent<Rigidbody2D>();
         if(side){
-            timer = 2400;
+            timer = 300;
         }
     }
 
@@ -28,9 +28,9 @@ public class FallingItem : MonoBehaviour
 
         if(side){
             if(leftRight){
-                gameObject.transform.position = new Vector2(transform.position.x + 0.03f, transform.position.y);
+                gameObject.transform.position = new Vector2(transform.position.x + 0.5f, transform.position.y);
             }else{
-                gameObject.transform.position = new Vector2(transform.position.x - 0.03f, transform.position.y);
+                gameObject.transform.position = new Vector2(transform.position.x - 0.5f, transform.position.y);
             }
         }
     }

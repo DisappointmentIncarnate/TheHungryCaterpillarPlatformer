@@ -16,11 +16,11 @@ public class GameOverController : MonoBehaviour
 
     void Start(){
         if(SceneManager.GetActiveScene().name != "Ending"){
-            timer = 2500;
+            timer = 100;
         }else{
             butterfly.enabled = false;
             aniCount = endingAni.Length-1;
-            timer = 10000;
+            timer = 500;
         }
     }
 
@@ -42,7 +42,7 @@ public class GameOverController : MonoBehaviour
                 if(timer <= 0 ){
                     finishCount = true;
                 }
-                if(timer % 1000 == 0){
+                if(timer % 50 == 0){
                     if(aniCount != -1 ){
                         caterpillar.sprite = endingAni[aniCount];
                         aniCount--;

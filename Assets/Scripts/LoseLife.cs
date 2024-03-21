@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LoseLife : MonoBehaviour
 {
+    //Code used to determine whether or not the player should go to a gameover screen or a lose life scene
+
     static int lastScene;
     static int remainingLives = 3;
     

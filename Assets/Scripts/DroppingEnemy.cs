@@ -9,7 +9,7 @@ public class DroppingEnemy : MonoBehaviour
     public Transform[] points;  //Array of transform points
 
     public GameObject itemPrefab;
-    public int internalCooldown = 1500;
+    public int internalCooldown = 50;
     private bool dropItem = true;
 
     private int i; // Array index
@@ -44,7 +44,7 @@ public class DroppingEnemy : MonoBehaviour
         if(internalCooldown <= 0 && dropItem){
             GameObject item = Instantiate(itemPrefab, transform.position, transform.rotation);
             dropItem = false;
-            internalCooldown = Random.Range(100, 3000);
+            internalCooldown = Random.Range(100, 250);
         }else{
             dropItem = true;
             internalCooldown--;
