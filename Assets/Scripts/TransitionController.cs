@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class TransitionController : MonoBehaviour
 {
     private bool finishCount = false;
-    private int timer = 1400;
+    private int timer = 100;
     static int lastScene;
     private string text;
     public Sprite[] fruits;
@@ -21,7 +21,7 @@ public class TransitionController : MonoBehaviour
     public Image fruit5;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(!finishCount){
             timer--;

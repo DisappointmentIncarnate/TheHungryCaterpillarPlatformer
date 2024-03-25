@@ -23,7 +23,7 @@ public class ExtraMode : MonoBehaviour
     private float verticalMovement;
 
     public ExtraHUDControl hud;
-    private int finalTime = 3000;
+    private int finalTime = 100;
 
     SpriteRenderer sr;
     // Start is called before the first frame update
@@ -43,12 +43,6 @@ public class ExtraMode : MonoBehaviour
             scoreInterval = 60;
         }
         scoreInterval--;
-        if(hitpoints <= 0){
-            finalTime--;
-        }
-        if(finalTime == 0){
-            SceneManager.LoadScene("Menu");
-        }
     }
 
     void FixedUpdate()
@@ -69,6 +63,13 @@ public class ExtraMode : MonoBehaviour
                 sr.enabled = true;
             }
 
+        }
+
+        if(hitpoints <= 0){
+            finalTime--;
+        }
+        if(finalTime == 0){
+            SceneManager.LoadScene("Menu");
         }
     }
 

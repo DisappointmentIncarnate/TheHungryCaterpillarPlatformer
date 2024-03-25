@@ -12,7 +12,6 @@ public class MainMenu : MonoBehaviour
 
     public void closeGame(){
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false; //probably not necessary but nice while testing
     }
 
     public void extraGame(){
