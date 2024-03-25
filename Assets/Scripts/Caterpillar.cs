@@ -125,11 +125,11 @@ public class Caterpillar : MonoBehaviour
         }else if(col.gameObject.tag == "bad_item"){
             changeStat(1, 1, false);
             invincible = true;
-            audioManager.PlaySFX(audioManager.chomp);
+            playSound("food");
         }else if(col.gameObject.tag == "good_item"){
             changeStat(1, 1, true);
             changeStat(1, 0, true);
-            audioManager.PlaySFX(audioManager.chomp);
+            playSound("food");
         }else if(col.gameObject.tag == "enemy"){
             changeStat(1, 0, false);
             invincible = true;
@@ -159,6 +159,15 @@ public class Caterpillar : MonoBehaviour
         }
         if(health <= 0 || hitpoints <= 0){ //player dies from damage
             LoseLife.ChangeScene();
+        }
+    }
+
+    void playSound(string type){ //method calls audioManager
+        if(GameObject.FindGameObjectsWithTag("Audio").Length == 0){ //audio object does not exist
+            return;
+        }
+        if(type == "food"){
+            audioManager.PlaySFX(audioManager.chomp);
         }
     }
 
